@@ -55,7 +55,7 @@ class MyComp extends React.Component {
         console.log("render executed");
         return (
             <div>
-                <button onClick={this.sthfunctin} >changeme</button>
+                <button onClick={changedegisken} >changeme</button>
                 <input type='text' onChange={changeVal1}/>+
                 <input type='text' onChange={changeVal2}/>=
                 <span>{this.state.toplam}</span>

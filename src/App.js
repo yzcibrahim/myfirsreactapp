@@ -9,7 +9,10 @@ class App extends React.Component {
   {
     return (<div className='App'>
       {/* <MyComp /> */}
-     <Toplama/>
+     <Toplama islem="+"/>
+     <Toplama islem="-"/>
+     <Toplama islem="*"/>
+     <Toplama islem="/"/>
     </div>)
   } 
 }

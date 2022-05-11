@@ -28,11 +28,14 @@ class App extends React.Component {
     let ad="";
     let soyad="";
     const ekle=()=>{
-        var kisiler=this.state.kisiler;
-        let maxId=kisiler[kisiler.length-1].id;
+        let kisiler=this.state.kisiler;
+         let maxId=kisiler.length>0?kisiler[kisiler.length-1].id:0;
+        //  if(kisiler.length>0)
+        //  maxId=kisiler[kisiler.length-1].id;
         kisiler.push({ad:ad, soyad:soyad, id:++maxId});
-      this.refs.ad.value="";
-      this.refs.soyad.value="";
+       
+        this.refs.ad.value="";
+        this.refs.soyad.value="";
       //  this.setState({kisiler:kisiler});
         this.setState({kisiler})
     }
@@ -42,6 +45,12 @@ class App extends React.Component {
     const setSoyAd=(event)=>{
       soyad=event.target.value
     }
+    const deleteKisi=(id)=>
+    {
+      let kisiler=this.state.kisiler.filter(c=>c.id!==id);
+      this.setState({kisiler});
+      alert(id);
+    }
     return (<div className='App'>
      <input ref="ad" onChange={setAd} type='text'></input>
     <input  ref="soyad" onChange={setSoyAd} type='text'></input>
@@ -50,7 +59,8 @@ class App extends React.Component {
         this.state.kisiler.map((kisiItem) => {
           return(
             <div key={kisiItem.id}>
-            <Kisi  kisi={kisiItem} />
+           
+            <Kisi deleteKisi={()=>{deleteKisi(kisiItem.id)}}  kisi={kisiItem} />
             </div>
           )
           // return (<div key={kisi.id}>
